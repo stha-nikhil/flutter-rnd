@@ -1,22 +1,55 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
 
-import 'src/app.dart';
-import 'config.dart';
-import 'src/injector.dart';
+void main() {
+  runApp(const MyApp());
+}
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  await initializeDependencies();
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
+      home: const MyHomePage(title: 'Home Page'),
+    );
+  }
+}
 
-  runApp(EasyLocalization(
-    path: 'assets/translations',
-    useOnlyLangCode: true,
-    startLocale: const Locale(Config.locale),
-    supportedLocales: const [
-      Locale('en'),
-    ],
-    child: const App(),
-  ));
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  var current = WordPair.random();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(children: [
+        Text(current.asCamelCase),
+        ElevatedButton(
+          onPressed: getNext,
+          child: Text('Next'),
+        ),
+      ]),
+    );
+  }
+
+  //function to update random word in current and set state
+  void getNext() {
+    setState(() {
+      current = WordPair.random();
+    });
+  }
 }

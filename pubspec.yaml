@@ -1,0 +1,39 @@
+name: flutter_skeleton
+description: Flutter Skeleton
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.0.0
+  provider: ^6.0.5
+  easy_localization: ^3.0.1
+  flutter_form_builder: ^7.7.0
+  form_builder_validators: ^8.4.0
+  sizer: ^2.0.15
+  shared_preferences: ^2.0.17
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.1
+
+flutter:
+  uses-material-design: true
+
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
+  assets:
+    # Add assets from the images directory to the application.
+    - assets/images/
+    - assets/translations/
+

@@ -33,23 +33,51 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var current = WordPair.random();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(children: [
-        Text(current.asCamelCase),
-        ElevatedButton(
-          onPressed: getNext,
-          child: Text('Next'),
-        ),
-      ]),
-    );
-  }
-
-  //function to update random word in current and set state
   void getNext() {
     setState(() {
       current = WordPair.random();
     });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BigCard(current: current),
+            SizedBox(height: 25),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  elevation: 5, padding: EdgeInsets.all(20)),
+              onPressed: getNext,
+              child: Text('Next'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BigCard extends StatelessWidget {
+  const BigCard({
+    super.key,
+    required this.current,
+  });
+
+  final WordPair current;
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    var style = theme.textTheme.displaySmall!;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(25),
+        child: Text(current.asLowerCase, style: style),
+      ),
+    );
   }
 }

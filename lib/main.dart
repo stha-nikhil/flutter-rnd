@@ -11,13 +11,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
-      home: const MyHomePage(title: 'Home Page'),
-    );
+    return DefaultTabController(
+        length: 2,
+        child: MaterialApp(
+          title: 'Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.teal,
+          ),
+          home: const MyHomePage(title: 'Home Page'),
+        ));
   }
 }
 
@@ -42,6 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Demo"),
+        backgroundColor: Colors.teal,
+        elevation: 3,
+        bottom: TabBar(
+          tabs: [Tab(icon: Icon(Icons.home)), Tab(icon: Icon(Icons.add_card))],
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

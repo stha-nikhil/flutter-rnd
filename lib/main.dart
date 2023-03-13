@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,15 +12,108 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
         length: 2,
-        child: MaterialApp(
-          title: 'Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.teal,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("Demo"),
+            backgroundColor: Colors.teal,
+            elevation: 5,
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.home)),
+                Tab(icon: Icon(Icons.add_card))
+              ],
+            ),
           ),
-          home: const MyHomePage(title: 'Home Page'),
-        ));
+          body: const TabBarView(
+            children: [
+              MyFormPage(title: 'Form Page'),
+              MyHomePage(title: "home page"),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyFormPage extends StatefulWidget {
+  const MyFormPage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyFormPage> createState() => _MyFormPageState();
+}
+
+class _MyFormPageState extends State<MyFormPage> {
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: Icon(Icons.person),
+              hintText: 'Enter your name',
+              labelText: 'Name',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter name';
+              }
+              return null;
+            },
+          ),
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: Icon(Icons.calendar_today),
+              hintText: 'Enter your age',
+              labelText: 'Age',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter age';
+              }
+              return null;
+            },
+          ),
+          TextFormField(
+            decoration: const InputDecoration(
+              icon: Icon(Icons.home),
+              hintText: 'Enter your address',
+              labelText: 'Address',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter address';
+              }
+              return null;
+            },
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 150.0, top: 40.0),
+            child: ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Data is processing'),
+                  ));
+                }
+              },
+              child: Text("Submit"),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -35,23 +129,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var current = WordPair.random();
 
-  void getNext() {
-    setState(() {
-      current = WordPair.random();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Demo"),
-        backgroundColor: Colors.teal,
-        elevation: 3,
-        bottom: TabBar(
-          tabs: [Tab(icon: Icon(Icons.home)), Tab(icon: Icon(Icons.add_card))],
-        ),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +141,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   elevation: 5, padding: EdgeInsets.all(20)),
-              onPressed: getNext,
+              onPressed: () {
+                setState(() {
+                  current = WordPair.random();
+                });
+              },
               child: Text('Next'),
             ),
           ],

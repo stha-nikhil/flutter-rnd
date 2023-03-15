@@ -8,18 +8,23 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => MyAppState();
+  State<StatefulWidget> createState() => _MyAppState();
 }
 
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
 
   void answer() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      if (_questionIndex == 0){
+        _questionIndex = 1;
+      }
+      else{
+        _questionIndex = 0;
+      }
     });
     print('Answer Recorded!');
-    print('Index: $questionIndex');
+    print('Index: $_questionIndex');
   }
 
   @override
@@ -35,7 +40,7 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            Text(questions[_questionIndex]),
             Text('The question: '),
             ElevatedButton(
               onPressed: answer,

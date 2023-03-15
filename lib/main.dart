@@ -1,22 +1,21 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'src/app.dart';
-import 'config.dart';
-import 'src/injector.dart';
+// void main(){
+//   runApp(MyApp());
+// }
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() => runApp(MyApp());
 
-  await initializeDependencies();
-
-  runApp(EasyLocalization(
-    path: 'assets/translations',
-    useOnlyLangCode: true,
-    startLocale: const Locale(Config.locale),
-    supportedLocales: const [
-      Locale('en'),
-    ],
-    child: const App(),
-  ));
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Demo App'),
+        ),
+        body: Text('This is body.'),
+      ),
+    );
+  }
 }

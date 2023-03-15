@@ -19,6 +19,7 @@ dependencies:
   form_builder_validators: ^8.4.0
   sizer: ^2.0.15
   shared_preferences: ^2.0.17
+  english_words: ^4.0.0
 
 dev_dependencies:
   flutter_test:

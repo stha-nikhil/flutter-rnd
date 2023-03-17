@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './question.dart';
 import './answer.dart';
+import 'style.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,10 +16,9 @@ class _MyAppState extends State<MyApp> {
 
   void _answer() {
     setState(() {
-      if (_questionIndex == 0){
+      if (_questionIndex == 0) {
         _questionIndex = 1;
-      }
-      else{
+      } else {
         _questionIndex = 0;
       }
     });
@@ -39,12 +39,24 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(
-                questions[_questionIndex]
-            ),
+            Question(questions[_questionIndex]),
             Answer(_answer),
             Answer(_answer),
           ],
+        ),
+      ),
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+        scaffoldBackgroundColor: Colors.grey.shade100,
+        appBarTheme: AppBarTheme(
+          titleTextStyle: appBarTextStyle,
+        ),
+        textTheme: TextTheme(
+          titleMedium: questionTextStyle,
+          labelMedium: answerTextStyle,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+           style: elevatedButtonStyle.style,
         ),
       ),
     );

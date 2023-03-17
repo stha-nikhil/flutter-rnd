@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import './question.dart';
+import './answer.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +13,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
-  void answer() {
+  void _answer() {
     setState(() {
       if (_questionIndex == 0){
         _questionIndex = 1;
@@ -27,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'What does HTML stand for',
+      'What does HTML stand for?',
       'Which of these is a programming language?',
     ];
     return MaterialApp(
@@ -40,14 +42,8 @@ class _MyAppState extends State<MyApp> {
             Question(
                 questions[_questionIndex]
             ),
-            ElevatedButton(
-              onPressed: answer,
-              child: Text('Answer 1'),
-            ),
-            ElevatedButton(
-              onPressed: answer,
-              child: Text('Answer 2'),
-            )
+            Answer(_answer),
+            Answer(_answer),
           ],
         ),
       ),

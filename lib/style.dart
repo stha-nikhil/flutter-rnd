@@ -28,11 +28,21 @@ const answerTextStyle = TextStyle(
   color: Colors.white,
 );
 
-
 final elevatedButtonStyle = ElevatedButtonThemeData(
   style: ButtonStyle(
     backgroundColor: MaterialStateProperty.all(Colors.grey.shade600),
     shape: MaterialStateProperty.all(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
   ),
+);
+
+const drawerStyle = DrawerThemeData(
+  width: 250,
+  elevation: 2.5,
+);
+
+const listTextStyle = TextStyle(
+  fontFamily: questionTextFontName,
+  fontSize: mediumTextSize,
+  fontWeight: FontWeight.bold,
 );

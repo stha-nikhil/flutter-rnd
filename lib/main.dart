@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './question.dart';
 import './answer.dart';
+import 'drawer.dart';
 import 'style.dart';
 
 void main() => runApp(MyApp());
@@ -22,8 +23,7 @@ class _MyAppState extends State<MyApp> {
         _questionIndex = 0;
       }
     });
-    print('Answer Recorded!');
-    print('Index: $_questionIndex');
+
   }
 
   @override
@@ -35,7 +35,11 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Demo App'),
+          title: const Text('Demo App'),
+        ),
+        drawer: const DrawerTheme(
+          data: drawerStyle,
+          child: AppDrawer(),
         ),
         body: Column(
           children: [
@@ -48,16 +52,17 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.teal,
         scaffoldBackgroundColor: Colors.grey.shade100,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           titleTextStyle: appBarTextStyle,
         ),
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           titleMedium: questionTextStyle,
           labelMedium: answerTextStyle,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
-           style: elevatedButtonStyle.style,
+          style: elevatedButtonStyle.style,
         ),
+        drawerTheme: drawerStyle,
       ),
     );
   }

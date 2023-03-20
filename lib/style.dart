@@ -31,8 +31,12 @@ const answerTextStyle = TextStyle(
 final elevatedButtonStyle = ElevatedButtonThemeData(
   style: ButtonStyle(
     backgroundColor: MaterialStateProperty.all(Colors.grey.shade600),
+
     shape: MaterialStateProperty.all(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+    minimumSize: MaterialStateProperty.all(
+      Size.fromHeight(70),
+    )
   ),
 );
 

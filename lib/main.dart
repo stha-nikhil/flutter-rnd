@@ -23,7 +23,6 @@ class _MyAppState extends State<MyApp> {
         _questionIndex = 0;
       }
     });
-
   }
 
   @override
@@ -43,9 +42,27 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(questions[_questionIndex]),
-            Answer(_answer),
-            Answer(_answer),
+            SizedBox(
+              height: 100,
+            ),
+            SizedBox(
+                height: 150,
+                child: Question(
+                  questions[_questionIndex],
+                )),
+            Expanded(
+              child: ListView.separated(
+                padding: const EdgeInsets.all(8),
+                itemCount: 2,
+                itemBuilder: (context, int index) {
+                  return Answer(_answer);
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    const SizedBox(
+                  height: 35,
+                ),
+              ),
+            ),
           ],
         ),
       ),

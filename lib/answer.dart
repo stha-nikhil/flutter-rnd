@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
-  const Answer(this.answerHandler, {super.key});
+  const Answer(this.answerHandler, this.answerText, {super.key});
 
+  final String answerText ;
   final VoidCallback answerHandler;
 
   @override
@@ -10,7 +11,7 @@ class Answer extends StatelessWidget {
     return Container(
       child: ElevatedButton(
         child: Text(
-          'Answer1s',
+          answerText,
           style: Theme.of(context).textTheme.labelMedium,
         ),
         onPressed: answerHandler,

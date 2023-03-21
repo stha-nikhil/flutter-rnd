@@ -37,6 +37,7 @@ final elevatedButtonStyle = ElevatedButtonThemeData(
     minimumSize: MaterialStateProperty.all(
       Size.fromHeight(70),
     )
+
   ),
 );
 

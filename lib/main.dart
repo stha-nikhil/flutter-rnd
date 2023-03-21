@@ -27,9 +27,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      'What does HTML stand for?',
-      'Which of these is a programming language?',
+    const questions = [
+      {
+        'questionText': 'A compiler transforms _____',
+        'answers': ['Code', 'Swift', 'Braces'],
+      },
+      {
+        'questionText': 'Which of these is a programming language?',
+        'answers': ['HTML', 'Go Lang'],
+      },
     ];
     return MaterialApp(
       home: Scaffold(
@@ -42,27 +48,36 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
-            SizedBox(
-                height: 150,
-                child: Question(
-                  questions[_questionIndex],
-                )),
-            Expanded(
-              child: ListView.separated(
-                padding: const EdgeInsets.all(8),
-                itemCount: 2,
-                itemBuilder: (context, int index) {
-                  return Answer(_answer);
-                },
-                separatorBuilder: (BuildContext context, int index) =>
-                    const SizedBox(
-                  height: 35,
-                ),
-              ),
+            Question(
+              questions[_questionIndex]['questionText'] as String,
             ),
+            const SizedBox(
+              height: 80,
+            ),
+            ...(questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Container(
+                margin: const EdgeInsets.all(10),
+                  child: Answer(_answer, answer),
+              );
+            }).toList(),
+
+            // Expanded(
+            //   child: ListView.separated(
+            //     padding: const EdgeInsets.all(8),
+            //     itemCount: 2,
+            //     itemBuilder: (context, int index) {
+            //       return Answer(_answer);
+            //     },
+            //     separatorBuilder: (BuildContext context, int index) =>
+            //     const SizedBox(
+            //       height: 35,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

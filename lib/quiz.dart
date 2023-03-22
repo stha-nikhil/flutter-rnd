@@ -6,13 +6,15 @@ import 'drawer.dart';
 import 'points.dart';
 
 class Quiz extends StatelessWidget {
-  const Quiz(this.questions, this.questionIndex, this.answerFunc, this.points, {super.key});
+  const Quiz(this.questions, this.questionIndex, this.answerFunc, this.points,
+      this.reset,
+      {super.key});
 
   final List<Map<String, Object>> questions;
   final int questionIndex;
   final Function answerFunc;
   final int points;
-
+  final VoidCallback reset;
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +35,17 @@ class Quiz extends StatelessWidget {
               const SizedBox(
                 height: 80,
               ),
-              ...(questions[questionIndex]['answers'] as List<Map<String, Object>>)
+              ...(questions[questionIndex]['answers']
+                      as List<Map<String, Object>>)
                   .map((answer) {
                 return Container(
                   margin: const EdgeInsets.all(10),
-                  child: Answer(()=>answerFunc(answer['points']), answer['answerText'] as String),
+                  child: Answer(() => answerFunc(answer['points']),
+                      answer['answerText'] as String),
                 );
               }).toList(),
             ],
           )
-        :  Result(points);
+        : Result(points, reset);
   }
 }

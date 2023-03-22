@@ -27,8 +27,8 @@ class _MyAppState extends State<MyApp> {
     {
       'questionText': 'Which of these is a programming language?',
       'answers': [
-        {'answerText': 'HTML', 'points': 1},
-        {'answerText': 'Python', 'points': 0}
+        {'answerText': 'HTML', 'points': 0},
+        {'answerText': 'Python', 'points': 1}
       ]
     }
   ];
@@ -37,6 +37,13 @@ class _MyAppState extends State<MyApp> {
     _totalPoint += points;
     setState(() {
       _questionIndex += 1;
+    });
+  }
+
+  void _reset() {
+    setState(() {
+      _totalPoint = 0;
+      _questionIndex = 0;
     });
   }
 
@@ -51,7 +58,7 @@ class _MyAppState extends State<MyApp> {
           data: drawerStyle,
           child: AppDrawer(),
         ),
-        body: Quiz(questions, _questionIndex, _answer, _totalPoint),
+        body: Quiz(questions, _questionIndex, _answer, _totalPoint, _reset),
       ),
       theme: ThemeData(
         primarySwatch: Colors.teal,

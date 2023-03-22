@@ -47,3 +47,19 @@ class AppDrawer extends StatelessWidget {
     );
   }
 }
+
+class CardTitle extends StatelessWidget {
+  const CardTitle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Center(
+       child: Text(
+           'Programming',
+           style: Theme.of(context).textTheme.titleSmall,
+       ),
+      )
+    );
+  }
+}

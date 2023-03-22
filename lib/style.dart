@@ -28,17 +28,21 @@ const answerTextStyle = TextStyle(
   color: Colors.white,
 );
 
+const cardTextStyle = TextStyle(
+  fontFamily: answerTextFontName,
+  fontWeight: FontWeight.bold,
+  fontSize: mediumTextSize,
+  color: Colors.teal,
+);
+
 final elevatedButtonStyle = ElevatedButtonThemeData(
   style: ButtonStyle(
-    backgroundColor: MaterialStateProperty.all(Colors.grey.shade600),
-
-    shape: MaterialStateProperty.all(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
-    minimumSize: MaterialStateProperty.all(
-      Size.fromHeight(70),
-    )
-
-  ),
+      backgroundColor: MaterialStateProperty.all(Colors.grey.shade600),
+      shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+      minimumSize: MaterialStateProperty.all(
+        Size.fromHeight(70),
+      )),
 );
 
 const drawerStyle = DrawerThemeData(
@@ -50,4 +54,11 @@ const listTextStyle = TextStyle(
   fontFamily: questionTextFontName,
   fontSize: mediumTextSize,
   fontWeight: FontWeight.bold,
+);
+
+const cardStyle = CardTheme(
+  elevation: 0,
+  color: Colors.white60,
+  shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12))),
 );

@@ -49,7 +49,12 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             const SizedBox(
-              height: 100,
+              width: 200,
+              height: 50,
+              child: CardTitle(),
+            ),
+            SizedBox(
+              height: 70,
             ),
             Question(
               questions[_questionIndex]['questionText'] as String,
@@ -61,23 +66,9 @@ class _MyAppState extends State<MyApp> {
                 .map((answer) {
               return Container(
                 margin: const EdgeInsets.all(10),
-                  child: Answer(_answer, answer),
+                child: Answer(_answer, answer),
               );
             }).toList(),
-
-            // Expanded(
-            //   child: ListView.separated(
-            //     padding: const EdgeInsets.all(8),
-            //     itemCount: 2,
-            //     itemBuilder: (context, int index) {
-            //       return Answer(_answer);
-            //     },
-            //     separatorBuilder: (BuildContext context, int index) =>
-            //     const SizedBox(
-            //       height: 35,
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
@@ -89,12 +80,14 @@ class _MyAppState extends State<MyApp> {
         ),
         textTheme: const TextTheme(
           titleMedium: questionTextStyle,
+          titleSmall: cardTextStyle,
           labelMedium: answerTextStyle,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: elevatedButtonStyle.style,
         ),
         drawerTheme: drawerStyle,
+        cardTheme: cardStyle,
       ),
     );
   }

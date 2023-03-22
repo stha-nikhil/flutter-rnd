@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './question.dart';
-import './answer.dart';
 import 'drawer.dart';
+import 'quiz.dart';
 import 'style.dart';
 
 void main() => runApp(MyApp());
@@ -14,29 +13,35 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _totalPoint = 0;
 
-  void _answer() {
+  static const questions = [
+    {
+      'questionText': 'A compiler transforms _____',
+      'answers': [
+        {'answerText': 'Code', 'points': 1},
+        {'answerText': 'Swift', 'points': 0},
+        {'answerText': 'Braces', 'points': 0}
+      ]
+    },
+    {
+      'questionText': 'Which of these is a programming language?',
+      'answers': [
+        {'answerText': 'HTML', 'points': 1},
+        {'answerText': 'Python', 'points': 0}
+      ]
+    }
+  ];
+
+  void _answer(int points) {
+    _totalPoint += points;
     setState(() {
-      if (_questionIndex == 0) {
-        _questionIndex = 1;
-      } else {
-        _questionIndex = 0;
-      }
+      _questionIndex += 1;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    const questions = [
-      {
-        'questionText': 'A compiler transforms _____',
-        'answers': ['Code', 'Swift', 'Braces'],
-      },
-      {
-        'questionText': 'Which of these is a programming language?',
-        'answers': ['HTML', 'Go Lang'],
-      },
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -46,31 +51,7 @@ class _MyAppState extends State<MyApp> {
           data: drawerStyle,
           child: AppDrawer(),
         ),
-        body: Column(
-          children: [
-            const SizedBox(
-              width: 200,
-              height: 50,
-              child: CardTitle(),
-            ),
-            SizedBox(
-              height: 70,
-            ),
-            Question(
-              questions[_questionIndex]['questionText'] as String,
-            ),
-            const SizedBox(
-              height: 80,
-            ),
-            ...(questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) {
-              return Container(
-                margin: const EdgeInsets.all(10),
-                child: Answer(_answer, answer),
-              );
-            }).toList(),
-          ],
-        ),
+        body: Quiz(questions, _questionIndex, _answer, _totalPoint),
       ),
       theme: ThemeData(
         primarySwatch: Colors.teal,

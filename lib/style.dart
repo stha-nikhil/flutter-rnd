@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 const String questionTextFontName = 'Lato';
 const String answerTextFontName = 'Montserrat';
 
-const mediumTextSize = 20.0;
+const mediumTextSize = 22.0;
 const largeTextSize = 30.0;
-const smallTextSize = 18.0;
+const smallTextSize = 20.0;
 
 const appBarTextStyle = TextStyle(
   fontFamily: questionTextFontName,

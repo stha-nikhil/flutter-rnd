@@ -49,17 +49,25 @@ class AppDrawer extends StatelessWidget {
 }
 
 class CardTitle extends StatelessWidget {
-  const CardTitle({Key? key}) : super(key: key);
+  const CardTitle(this.title, {super.key});
+
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Center(
-       child: Text(
-           'Programming',
-           style: Theme.of(context).textTheme.titleSmall,
-       ),
-      )
+        child: Text(
+          title == null ? 'Programming' : title!,
+          style: title == null
+              ? Theme.of(context).textTheme.titleSmall
+              : const TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 40,
+                ),
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }

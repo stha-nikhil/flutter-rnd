@@ -22,7 +22,7 @@ class Quiz extends StatelessWidget {
               const SizedBox(
                 width: 200,
                 height: 50,
-                child: CardTitle(),
+                child: CardTitle(null),
               ),
               SizedBox(
                 height: 70,

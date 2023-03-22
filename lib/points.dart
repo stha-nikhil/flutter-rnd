@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'drawer.dart';
+
 class Result extends StatelessWidget {
   const Result(this.result, {super.key});
 
@@ -19,21 +21,14 @@ class Result extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
+        SizedBox(
           height: 200,
         ),
-        Text(
-          resultComment,
-          style: const TextStyle(
-            color: Colors.blueGrey,
-            fontSize: 40,
-          ),
-          textAlign: TextAlign.center,
-        ),
+        CardTitle(resultComment),
         Center(
           child: Text(
             '$result',
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.teal,
               fontWeight: FontWeight.bold,
               fontSize: 120,

@@ -1,5 +1,5 @@
-name: flutter_skeleton
-description: Flutter Skeleton
+name: flutter_app
+description: My journey to learn Flutter
 
 # Prevent accidental publishing to pub.dev.
 publish_to: 'none'
@@ -37,4 +37,14 @@ flutter:
     # Add assets from the images directory to the application.
     - assets/images/
     - assets/translations/
+
+  fonts:
+    - family: "Lato"
+      fonts:
+        - asset: assets/fonts/Lato-Regular.ttf
+          weight: 400
+    - family: "Montserrat"
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 300
 

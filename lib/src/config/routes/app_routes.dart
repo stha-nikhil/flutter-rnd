@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_skeleton/src/pages/demo.dart';
+import 'package:flutter_app/src/pages/demo.dart';
 
 class AppRouter {
   static Route<dynamic> onGenerateRoutes(

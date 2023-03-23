@@ -21,13 +21,13 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           height: 200,
         ),
         CardTitle(resultComment),
-        Center(
-          child: Text(
+        Text(
             '$result',
             style: const TextStyle(
               color: Colors.teal,
@@ -36,7 +36,6 @@ class Result extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-        ),
         SizedBox(
           height: 70,
         ),

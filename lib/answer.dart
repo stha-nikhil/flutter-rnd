@@ -9,12 +9,13 @@ class Answer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(5),
       child: ElevatedButton(
+        onPressed: answerHandler,
         child: Text(
           answerText,
           style: Theme.of(context).textTheme.labelMedium,
         ),
-        onPressed: answerHandler,
       ),
     );
   }

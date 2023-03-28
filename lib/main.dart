@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'drawer.dart';
+import 'feedback.dart';
 import 'quiz.dart';
 import 'style.dart';
 
@@ -51,6 +52,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text('Demo App'),
         ),
@@ -58,7 +60,8 @@ class _MyAppState extends State<MyApp> {
           data: drawerStyle,
           child: AppDrawer(),
         ),
-        body: Quiz(questions, _questionIndex, _answer, _totalPoint, _reset),
+        body: const FeedBackForm(),
+        //Quiz(questions, _questionIndex, _answer, _totalPoint, _reset),
       ),
       theme: ThemeData(
         primarySwatch: Colors.teal,
@@ -67,8 +70,8 @@ class _MyAppState extends State<MyApp> {
           titleTextStyle: appBarTextStyle,
         ),
         textTheme: const TextTheme(
-          titleMedium: questionTextStyle,
-          titleSmall: cardTextStyle,
+          // titleMedium: questionTextStyle,
+           titleSmall: cardTextStyle,
           labelMedium: answerTextStyle,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(

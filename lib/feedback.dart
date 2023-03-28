@@ -29,6 +29,23 @@ class _FeedBackFormState extends State<FeedBackForm> {
                 hintText: 'Please enter your email / phone number',
                 icon: Icon(Icons.contact_page)),
           ),
+          Card(
+            color: Colors.grey.shade100,
+            child: const Padding(
+              // padding: EdgeInsets.only(top: 12.0),
+              padding: EdgeInsets.symmetric(horizontal: 0.5, vertical: 15),
+              child: TextField(
+                maxLines: 6,
+                keyboardType: TextInputType.multiline,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Feedback',
+                  hintText: 'Please enter your name',
+                  icon: Icon(Icons.inbox),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

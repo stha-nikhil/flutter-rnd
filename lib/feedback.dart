@@ -41,6 +41,12 @@ class _FeedBackFormState extends State<FeedBackForm> {
                 labelText: 'Name',
                 hintText: 'Please enter your name',
                 icon: Icon(Icons.person)),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return '*Required Name';
+              }
+              return null;
+            },
           ),
           TextFormField(
             controller: _addressTextController,
@@ -48,6 +54,12 @@ class _FeedBackFormState extends State<FeedBackForm> {
                 labelText: 'Contact',
                 hintText: 'Please enter your email / phone number',
                 icon: Icon(Icons.contact_page)),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return '*Required Contact';
+              }
+              return null;
+            },
           ),
           Card(
             color: Colors.grey.shade100,
@@ -70,11 +82,16 @@ class _FeedBackFormState extends State<FeedBackForm> {
             width: 150,
             height: 60,
             child: ElevatedButton(
-              onPressed: (){
-                _nameTextController.clear();
-                _messageTextController.clear();
-                _addressTextController.clear();
-                },
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _nameTextController.clear();
+                  _messageTextController.clear();
+                  _addressTextController.clear();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                     const SnackBar(content: Text('Processing...'))
+                  );
+                }
+              },
               child: const Text(
                 'Submit',
                 style: TextStyle(color: Colors.white),

@@ -52,7 +52,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text('Demo App'),
         ),
@@ -60,7 +59,9 @@ class _MyAppState extends State<MyApp> {
           data: drawerStyle,
           child: AppDrawer(),
         ),
-        body: const FeedBackForm(),
+        body: const SingleChildScrollView(
+          child: FeedBackForm(),
+        ),
         //Quiz(questions, _questionIndex, _answer, _totalPoint, _reset),
       ),
       theme: ThemeData(
@@ -71,7 +72,7 @@ class _MyAppState extends State<MyApp> {
         ),
         textTheme: const TextTheme(
           // titleMedium: questionTextStyle,
-           titleSmall: cardTextStyle,
+          titleSmall: cardTextStyle,
           labelMedium: answerTextStyle,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(

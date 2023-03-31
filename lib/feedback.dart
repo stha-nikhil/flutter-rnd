@@ -52,11 +52,15 @@ class _FeedBackFormState extends State<FeedBackForm> {
             controller: _addressTextController,
             decoration: const InputDecoration(
                 labelText: 'Contact',
-                hintText: 'Please enter your email / phone number',
+                hintText: 'Please enter your phone number',
                 icon: Icon(Icons.contact_page)),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return '*Required Contact';
+              }
+              final check = num.tryParse(value);
+              if (check == null) {
+                return '*Only numbers allowed';
               }
               return null;
             },
@@ -88,8 +92,7 @@ class _FeedBackFormState extends State<FeedBackForm> {
                   _messageTextController.clear();
                   _addressTextController.clear();
                   ScaffoldMessenger.of(context).showSnackBar(
-                     const SnackBar(content: Text('Processing...'))
-                  );
+                      const SnackBar(content: Text('Processing...')));
                 }
               },
               child: const Text(

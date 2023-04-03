@@ -14,6 +14,14 @@ class _FeedBackFormState extends State<FeedBackForm> {
   final TextEditingController _addressTextController = TextEditingController();
   final TextEditingController _messageTextController = TextEditingController();
 
+  bool _validate = true;
+
+  @override
+  void dispose() {
+    _messageTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -73,11 +81,12 @@ class _FeedBackFormState extends State<FeedBackForm> {
               child: TextField(
                 maxLines: 6,
                 controller: _messageTextController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
                   labelText: 'Feedback',
-                  hintText: 'Please enter your name',
-                  icon: Icon(Icons.inbox),
+                  hintText: 'Please enter your feedback',
+                  icon: const Icon(Icons.inbox),
+                  errorText: _validate ? 'Feedback can\'t be empty' : null,
                 ),
               ),
             ),
@@ -87,6 +96,10 @@ class _FeedBackFormState extends State<FeedBackForm> {
             height: 60,
             child: ElevatedButton(
               onPressed: () {
+                setState(() {
+                  _messageTextController.text.isEmpty ? _validate = true : _validate = false;
+                });
+
                 if (_formKey.currentState!.validate()) {
                   _nameTextController.clear();
                   _messageTextController.clear();

@@ -22,7 +22,19 @@ class _FeedBackFormState extends State<FeedBackForm> {
     });
   }
 
-@override
+  get _messageErrorText {
+    final message = _messageTextController.value.text;
+    if (message.isEmpty) {
+      return '*Feedback can\'t be empty';
+    }
+    if (message.length > 50) {
+      return '*Max character is 50';
+    }
+    return null;
+  }
+
+
+  @override
 Widget build(BuildContext context) {
   return Form(
     key: _formKey,
@@ -86,7 +98,7 @@ Widget build(BuildContext context) {
                 labelText: 'Feedback',
                 hintText: 'Please enter your feedback',
                 icon: const Icon(Icons.inbox),
-                errorText: _validate && _messageTextController.text.isEmpty? '*Feedback required' : null,
+                errorText: _validate ? _messageErrorText : null,
               ),
             ),
           ),

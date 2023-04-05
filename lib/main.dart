@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'drawer.dart';
 import 'feedback.dart';
 import 'quiz.dart';
+import 'register.dart';
 import 'style.dart';
 
 void main() => runApp(MyApp());
@@ -60,7 +61,8 @@ class _MyAppState extends State<MyApp> {
           child: AppDrawer(),
         ),
         body: const SingleChildScrollView(
-          child: FeedBackForm(),
+          child: RegisterForm()
+          // FeedBackForm(),
         ),
         //Quiz(questions, _questionIndex, _answer, _totalPoint, _reset),
       ),

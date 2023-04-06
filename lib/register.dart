@@ -54,6 +54,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
+                      FormBuilderValidators.maxLength(30),
                     ]),
                   ),
                   FormBuilderTextField(
@@ -68,6 +69,8 @@ class _RegisterFormState extends State<RegisterForm> {
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
                       FormBuilderValidators.numeric(),
+                      FormBuilderValidators.max(100),
+                      FormBuilderValidators.min(15)
                     ]),
                     keyboardType: TextInputType.number,
                   ),
@@ -76,7 +79,9 @@ class _RegisterFormState extends State<RegisterForm> {
                     decoration: const InputDecoration(
                         labelText: 'Gender', hintText: 'Select gender'),
                     validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required(),
+                      FormBuilderValidators.required(
+                        errorText: 'Please select a gender'
+                      ),
                     ]),
                     items: genderOptions
                         .map((gender) => DropdownMenuItem(
@@ -97,6 +102,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
+                      FormBuilderValidators.email(),
                     ]),
                   ),
                   FormBuilderRadioGroup(
@@ -113,7 +119,9 @@ class _RegisterFormState extends State<RegisterForm> {
                       errorStyle: TextStyle(height: 0.1)
                     ),
                     validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required()
+                      FormBuilderValidators.required(
+                        errorText: 'Please select a category'
+                      )
                     ]),
                     controlAffinity: ControlAffinity.leading,
                   )

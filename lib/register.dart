@@ -34,6 +34,51 @@ class _RegisterFormState extends State<RegisterForm> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            FormBuilder(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  SizedBox(
+                    height: 20,
+                  ),
+                  FormBuilderTextField(
+                    name: 'name',
+                    decoration: InputDecoration(
+                      labelText: 'User Name',
+                      suffixIcon: Icon(
+                        Icons.person_add,
+                      ),
+                      hintText: 'Enter your user name',
+                    ),
+                  ),
+                  FormBuilderTextField(
+                    name: 'age',
+                    decoration: InputDecoration(
+                      labelText: 'Age',
+                      suffixIcon: Icon(
+                        Icons.numbers,
+                      ),
+                      hintText: 'Enter your age',
+                    ),
+                  ),
+                  FormBuilderTextField(
+                    name: 'email',
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      suffixIcon: Icon(
+                        Icons.email,
+                      ),
+                      hintText: 'Enter your email',
+                    ),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                      FormBuilderValidators.email(),
+                    ]),
+                  ),
+                ],
+              ),
+            ),
           ],
         ));
   }

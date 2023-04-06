@@ -36,8 +36,9 @@ class _RegisterFormState extends State<RegisterForm> {
             ),
             FormBuilder(
               key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Wrap(
+                spacing: 30,
+                runSpacing: 20,
                 children: <Widget>[
                   const SizedBox(
                     height: 20,
@@ -108,6 +109,20 @@ class _RegisterFormState extends State<RegisterForm> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState?.saveAndValidate() ?? false) {
+                  _formKey.currentState?.reset();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Validation successful')));
+                }
+              },
+              child: const Text('Submit'),
+            ),
+
           ],
         ));
   }

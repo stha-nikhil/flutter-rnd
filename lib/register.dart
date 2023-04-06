@@ -23,10 +23,10 @@ class _RegisterFormState extends State<RegisterForm> {
         padding: EdgeInsets.all(12),
         child: Column(
           children: <Widget>[
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'Register Form',
               style: TextStyle(
                 fontSize: 25,
@@ -39,12 +39,12 @@ class _RegisterFormState extends State<RegisterForm> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   FormBuilderTextField(
                     name: 'name',
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'User Name',
                       suffixIcon: Icon(
                         Icons.person_add,
@@ -54,7 +54,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   ),
                   FormBuilderTextField(
                     name: 'age',
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Age',
                       suffixIcon: Icon(
                         Icons.numbers,
@@ -79,7 +79,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   ),
                   FormBuilderTextField(
                     name: 'email',
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Email',
                       suffixIcon: Icon(
                         Icons.email,
@@ -91,6 +91,20 @@ class _RegisterFormState extends State<RegisterForm> {
                       FormBuilderValidators.email(),
                     ]),
                   ),
+                  FormBuilderRadioGroup(
+                    name: 'Category',
+                    options: ['Normal', 'Advanced']
+                        .map((option) => FormBuilderFieldOption(
+                      value: option,
+                      child: Text(option),
+                    ))
+                        .toList(),
+                    decoration: const InputDecoration(
+                      labelText: 'Category',
+                      border: InputBorder.none,
+                    ),
+                    controlAffinity: ControlAffinity.leading,
+                  )
                 ],
               ),
             ),

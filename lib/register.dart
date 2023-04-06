@@ -62,6 +62,21 @@ class _RegisterFormState extends State<RegisterForm> {
                       hintText: 'Enter your age',
                     ),
                   ),
+                  FormBuilderDropdown(
+                    name: 'gender',
+                    decoration: const InputDecoration(
+                        labelText: 'Gender', hintText: 'Select gender'),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                    ]),
+                    items: genderOptions
+                        .map((gender) => DropdownMenuItem(
+                      alignment: AlignmentDirectional.centerStart,
+                      value: gender,
+                      child: Text(gender),
+                    ))
+                        .toList(),
+                  ),
                   FormBuilderTextField(
                     name: 'email',
                     decoration: InputDecoration(

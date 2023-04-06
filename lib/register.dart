@@ -27,7 +27,7 @@ class _RegisterFormState extends State<RegisterForm> {
               height: 10,
             ),
             const Text(
-              'Register Form',
+              'Registration Form',
               style: TextStyle(
                 fontSize: 25,
                 color: Colors.blueGrey,
@@ -37,11 +37,11 @@ class _RegisterFormState extends State<RegisterForm> {
             FormBuilder(
               key: _formKey,
               child: Wrap(
-                spacing: 30,
-                runSpacing: 20,
+                spacing: 10,
+                runSpacing: 5,
                 children: <Widget>[
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   FormBuilderTextField(
                     name: 'name',
@@ -52,6 +52,9 @@ class _RegisterFormState extends State<RegisterForm> {
                       ),
                       hintText: 'Enter your user name',
                     ),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                    ]),
                   ),
                   FormBuilderTextField(
                     name: 'age',
@@ -62,6 +65,11 @@ class _RegisterFormState extends State<RegisterForm> {
                       ),
                       hintText: 'Enter your age',
                     ),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                      FormBuilderValidators.numeric(),
+                    ]),
+                    keyboardType: TextInputType.number,
                   ),
                   FormBuilderDropdown(
                     name: 'gender',
@@ -72,7 +80,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     ]),
                     items: genderOptions
                         .map((gender) => DropdownMenuItem(
-                      alignment: AlignmentDirectional.centerStart,
+                      alignment: AlignmentDirectional.center,
                       value: gender,
                       child: Text(gender),
                     ))
@@ -89,7 +97,6 @@ class _RegisterFormState extends State<RegisterForm> {
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
-                      FormBuilderValidators.email(),
                     ]),
                   ),
                   FormBuilderRadioGroup(
@@ -103,14 +110,18 @@ class _RegisterFormState extends State<RegisterForm> {
                     decoration: const InputDecoration(
                       labelText: 'Category',
                       border: InputBorder.none,
+                      errorStyle: TextStyle(height: 0.1)
                     ),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required()
+                    ]),
                     controlAffinity: ControlAffinity.leading,
                   )
                 ],
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 35,
             ),
             ElevatedButton(
               onPressed: () {
@@ -122,7 +133,6 @@ class _RegisterFormState extends State<RegisterForm> {
               },
               child: const Text('Submit'),
             ),
-
           ],
         ));
   }

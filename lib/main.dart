@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'drawer.dart';
+import 'feedback.dart';
 import 'quiz.dart';
+import 'register.dart';
 import 'style.dart';
 
 void main() => runApp(MyApp());
@@ -58,7 +60,11 @@ class _MyAppState extends State<MyApp> {
           data: drawerStyle,
           child: AppDrawer(),
         ),
-        body: Quiz(questions, _questionIndex, _answer, _totalPoint, _reset),
+        body: const SingleChildScrollView(
+          child: RegisterForm()
+          // FeedBackForm(),
+        ),
+        //Quiz(questions, _questionIndex, _answer, _totalPoint, _reset),
       ),
       theme: ThemeData(
         primarySwatch: Colors.teal,
@@ -67,7 +73,7 @@ class _MyAppState extends State<MyApp> {
           titleTextStyle: appBarTextStyle,
         ),
         textTheme: const TextTheme(
-          titleMedium: questionTextStyle,
+          // titleMedium: questionTextStyle,
           titleSmall: cardTextStyle,
           labelMedium: answerTextStyle,
         ),

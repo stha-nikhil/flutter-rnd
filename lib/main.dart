@@ -52,20 +52,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Demo App'),
-        ),
-        drawer: const DrawerTheme(
-          data: drawerStyle,
-          child: AppDrawer(),
-        ),
-        body: const SingleChildScrollView(
-          child: RegisterForm()
-          // FeedBackForm(),
-        ),
-        //Quiz(questions, _questionIndex, _answer, _totalPoint, _reset),
-      ),
+      home: const AppDrawer(RegisterForm()),
       theme: ThemeData(
         primarySwatch: Colors.teal,
         scaffoldBackgroundColor: Colors.grey.shade100,
@@ -84,5 +71,6 @@ class _MyAppState extends State<MyApp> {
         cardTheme: cardStyle,
       ),
     );
+//   }
   }
 }

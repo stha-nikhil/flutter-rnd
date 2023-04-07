@@ -4,7 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import 'drawer.dart';
-import 'feedback.dart';
+import 'quiz.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({Key? key}) : super(key: key);
@@ -138,7 +138,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Registration successful')));
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const AppDrawer(FeedBackForm())));
+                    builder: (context) => const AppDrawer(Quiz())));
               }
             },
             child: const Text('Submit'),

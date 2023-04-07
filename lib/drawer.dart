@@ -5,7 +5,7 @@ import 'style.dart';
 class AppDrawer extends StatelessWidget {
   const AppDrawer(this.pageScreen, {super.key});
 
-  final StatefulWidget pageScreen;
+  final Widget pageScreen;
 
   @override
   Widget build(BuildContext context) {

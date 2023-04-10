@@ -40,7 +40,7 @@ class _FeedBackFormState extends State<FeedBackForm> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       Form(
@@ -136,33 +136,52 @@ class _FeedBackFormState extends State<FeedBackForm> {
         ),
       ),
       SizedBox(
-        width: 150,
-        height: 70,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: ElevatedButton(
-            onPressed: () {
-              _submit();
-              if (_formKey.currentState!.validate() &&
-                  _messageTextController.text.isNotEmpty) {
-                _nameTextController.clear();
-                _messageTextController.clear();
-                _phoneTextController.clear();
-                _emailTextController.clear();
-                _validate = false;
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Thank you for your feed back.')));
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const AppDrawer(RegisterForm())));
-              }
-            },
-            child: const Text(
-              'Submit',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
+        height: 20,
       ),
+      Row(
+          // mainAxisAlignment: MainAxisAlignment.start,
+
+          // padding: const EdgeInsets.only(top: 10),
+          children: [
+            Expanded(
+              // padding: const EdgeInsets.only(left:40),
+              child: Padding(
+                  padding: EdgeInsets.only(left: 20, right: 40),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _submit();
+                      if (_formKey.currentState!.validate() &&
+                          _messageTextController.text.isNotEmpty) {
+                        _nameTextController.clear();
+                        _messageTextController.clear();
+                        _phoneTextController.clear();
+                        _emailTextController.clear();
+                        _validate = false;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content:
+                                    Text('Thank you for your feed back.')));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                const AppDrawer(RegisterForm())));
+                      }
+                    },
+                    child: const Text(
+                      'Submit',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 25),
+              child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(Icons.arrow_back_ios),
+              ),
+            ),
+          ]),
     ]);
   }
 }

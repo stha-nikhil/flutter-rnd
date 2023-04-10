@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'drawer.dart';
+import 'register.dart';
+
 class FeedBackForm extends StatefulWidget {
   const FeedBackForm({Key? key}) : super(key: key);
 
@@ -147,8 +150,10 @@ class _FeedBackFormState extends State<FeedBackForm> {
                 _phoneTextController.clear();
                 _emailTextController.clear();
                 _validate = false;
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Validation successful')));
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Thank you for your feed back.')));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const AppDrawer(RegisterForm())));
               }
             },
             child: const Text(

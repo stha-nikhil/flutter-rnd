@@ -3,6 +3,7 @@ import 'package:flutter_app/question.dart';
 
 import 'answer.dart';
 import 'drawer.dart';
+import 'feedback.dart';
 import 'points.dart';
 
 class Quiz extends StatefulWidget {
@@ -54,10 +55,9 @@ class _QuizState extends State<Quiz> {
   }
 }
 
-
 class QuizAnswer extends StatelessWidget {
-  const QuizAnswer(this.questions, this.questionIndex, this.answerFunc, this.points,
-      this.reset,
+  const QuizAnswer(this.questions, this.questionIndex, this.answerFunc,
+      this.points, this.reset,
       {super.key});
 
   final List<Map<String, Object>> questions;
@@ -96,6 +96,7 @@ class QuizAnswer extends StatelessWidget {
               }).toList(),
             ],
           )
-        : Result(points, reset);
+        :
+              Result(points, reset);
   }
 }

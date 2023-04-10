@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'drawer.dart';
+import 'feedback.dart';
 
 class Result extends StatelessWidget {
   const Result(this.result, this.resetHandler, {super.key});
@@ -24,20 +25,20 @@ class Result extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: 200,
+          height: 130,
         ),
         CardTitle(resultComment),
         Text(
-            '$result',
-            style: const TextStyle(
-              color: Colors.teal,
-              fontWeight: FontWeight.bold,
-              fontSize: 120,
-            ),
-            textAlign: TextAlign.center,
+          '$result',
+          style: const TextStyle(
+            color: Colors.teal,
+            fontWeight: FontWeight.bold,
+            fontSize: 120,
           ),
-        SizedBox(
-          height: 70,
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(
+          height: 20,
         ),
         FloatingActionButton(
           onPressed: resetHandler,
@@ -45,6 +46,18 @@ class Result extends StatelessWidget {
           backgroundColor: Colors.white,
           child: const Icon(Icons.backspace),
         ),
+        const SizedBox(
+          height: 50,
+        ),
+        Padding(
+            padding: const EdgeInsets.all(12),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const AppDrawer(FeedBackForm())));
+              },
+              child: const Text('Provide feedback'),
+            ))
       ],
     );
   }

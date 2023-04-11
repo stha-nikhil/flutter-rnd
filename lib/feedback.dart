@@ -161,9 +161,7 @@ class _FeedBackFormState extends State<FeedBackForm> {
                             const SnackBar(
                                 content:
                                     Text('Thank you for your feed back.')));
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>
-                                const AppDrawer(RegisterForm())));
+                        Navigator.pushNamed(context, '/');
                       }
                     },
                     child: const Text(

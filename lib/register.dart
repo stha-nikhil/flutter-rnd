@@ -137,8 +137,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 _formKey.currentState?.reset();
                 ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Registration successful')));
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const AppDrawer(Quiz())));
+                Navigator.pushNamed(context, '/quiz');
               }
             },
             child: const Text('Submit'),

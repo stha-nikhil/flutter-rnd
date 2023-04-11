@@ -53,8 +53,7 @@ class Result extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const AppDrawer(FeedBackForm())));
+                Navigator.pushNamed(context, '/feedback');
               },
               child: const Text('Provide feedback'),
             ))

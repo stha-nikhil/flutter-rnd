@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'drawer.dart';
 import 'register.dart';
@@ -171,10 +172,10 @@ class _FeedBackFormState extends State<FeedBackForm> {
                   )),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 25),
+              padding: const EdgeInsets.only(right: 25),
               child: FloatingActionButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  context.go('/');
                 },
                 child: const Icon(Icons.arrow_back_ios),
               ),

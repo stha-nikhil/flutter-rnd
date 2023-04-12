@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'drawer.dart';
-import 'feedback.dart';
 
 class Result extends StatelessWidget {
   const Result(this.result, this.resetHandler, {super.key});
@@ -53,7 +53,7 @@ class Result extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/feedback');
+                context.go('/feedback');
               },
               child: const Text('Provide feedback'),
             ))

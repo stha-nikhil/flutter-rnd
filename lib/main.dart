@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'drawer.dart';
 import 'feedback.dart';
@@ -8,64 +9,42 @@ import 'style.dart';
 
 void main() => runApp(MyApp());
 
+final GoRouter _router = GoRouter(
+    routes: <RouteBase>[
+      GoRoute(
+          path: '/',
+          builder: (BuildContext context, GoRouterState state) {
+            return const AppDrawer(RegisterForm());
+          },
+          routes: <RouteBase>[
+            GoRoute(
+                path: 'quiz',
+                builder: (BuildContext context, GoRouterState state) {
+                  return const AppDrawer(Quiz());
+                }
+            ),
+            GoRoute(
+              path: 'feedback',
+              builder: (BuildContext context, GoRouterState state){
+                return const AppDrawer(FeedBackForm());
+              }
+            )
+          ]
+      )
+    ]
+);
+
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  var _questionIndex = 0;
-  var _totalPoint = 0;
-
-  static const questions = [
-    {
-      'questionText': 'A compiler transforms _____',
-      'answers': [
-        {'answerText': 'Code', 'points': 1},
-        {'answerText': 'Swift', 'points': 0},
-        {'answerText': 'Braces', 'points': 0}
-      ]
-    },
-    {
-      'questionText': 'Which of these is a programming language?',
-      'answers': [
-        {'answerText': 'HTML', 'points': 0},
-        {'answerText': 'Python', 'points': 1}
-      ]
-    }
-  ];
-
-  void _answer(int points) {
-    _totalPoint += points;
-    setState(() {
-      _questionIndex += 1;
-    });
-  }
-
-  void _reset() {
-    setState(() {
-      _totalPoint = 0;
-      _questionIndex = 0;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Demo App'),
-        ),
-        drawer: const DrawerTheme(
-          data: drawerStyle,
-          child: AppDrawer(),
-        ),
-        body: const SingleChildScrollView(
-          child: RegisterForm()
-          // FeedBackForm(),
-        ),
-        //Quiz(questions, _questionIndex, _answer, _totalPoint, _reset),
-      ),
+    return MaterialApp.router(
+      // home: const AppDrawer(RegisterForm()),
+      routerConfig: _router,
       theme: ThemeData(
         primarySwatch: Colors.teal,
         scaffoldBackgroundColor: Colors.grey.shade100,
@@ -83,6 +62,12 @@ class _MyAppState extends State<MyApp> {
         drawerTheme: drawerStyle,
         cardTheme: cardStyle,
       ),
+      // initialRoute: '/',
+      // routes: {
+      //   '/': (context) => const AppDrawer(RegisterForm()),
+      //   '/quiz': (context) => const AppDrawer(Quiz()),
+      //   '/feedback': (context) => const AppDrawer(FeedBackForm()),
+      // },
     );
   }
 }

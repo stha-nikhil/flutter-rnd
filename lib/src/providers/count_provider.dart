@@ -29,6 +29,7 @@ class CountPoints with ChangeNotifier {
   void answerFunc(int points) {
     _totalPoint += points;
     _questionIndex += 1;
+    notifyListeners();
   }
 
   void reset() {

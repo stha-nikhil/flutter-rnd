@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:provider/provider.dart';
 import 'drawer.dart';
 import 'feedback.dart';
 import 'quiz.dart';
 import 'register.dart';
+import 'src/providers/count_provider.dart';
 import 'style.dart';
 
 void main() => runApp(MyApp());
@@ -14,15 +15,15 @@ final GoRouter _router = GoRouter(
       GoRoute(
           path: '/',
           builder: (BuildContext context, GoRouterState state) {
-            return const AppDrawer(RegisterForm());
+            return const AppDrawer(Quiz());
           },
           routes: <RouteBase>[
-            GoRoute(
-                path: 'quiz',
-                builder: (BuildContext context, GoRouterState state) {
-                  return const AppDrawer(Quiz());
-                }
-            ),
+            // GoRoute(
+            //     path: 'quiz',
+            //     builder: (BuildContext context, GoRouterState state) {
+            //       return const AppDrawer(Quiz());
+            //     }
+            // ),
             GoRoute(
               path: 'feedback',
               builder: (BuildContext context, GoRouterState state){
@@ -42,7 +43,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => CountPoints())],
+
+      child: MaterialApp.router(
       // home: const AppDrawer(RegisterForm()),
       routerConfig: _router,
       theme: ThemeData(
@@ -68,6 +73,7 @@ class _MyAppState extends State<MyApp> {
       //   '/quiz': (context) => const AppDrawer(Quiz()),
       //   '/feedback': (context) => const AppDrawer(FeedBackForm()),
       // },
+    ),
     );
   }
 }

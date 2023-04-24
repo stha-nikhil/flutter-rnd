@@ -26,6 +26,7 @@ class _QuizState extends State<Quiz> {
                   questionProvider.questions.length
               ? Column(
                   children: [
+                    ProgressBar(questionProvider.questionIndex, questionProvider.questions.length),
                     const SizedBox(
                       width: 200,
                       height: 50,

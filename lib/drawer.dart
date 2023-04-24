@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'style.dart';
 
@@ -85,3 +86,30 @@ class CardTitle extends StatelessWidget {
     );
   }
 }
+
+class ProgressBar extends StatelessWidget {
+  const ProgressBar(this.index, this.total, {super.key});
+
+  final int index;
+  final int total;
+
+  @override
+  Widget build(BuildContext context) {
+    double progress = (index/total);
+    double percent = progress*100;
+    // double total = percent*100;
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: LinearPercentIndicator(
+        width: MediaQuery.of(context).size.width - 50,
+        animation: true,
+        lineHeight: 40,
+        percent: progress,
+        center: Text('$percent%',
+            style: Theme.of(context).textTheme.titleMedium,),
+        progressColor: Colors.teal,
+      ),
+    );
+  }
+}
+

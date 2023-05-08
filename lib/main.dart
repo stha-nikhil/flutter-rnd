@@ -4,11 +4,10 @@ import 'package:provider/provider.dart';
 import 'drawer.dart';
 import 'feedback.dart';
 import 'quiz.dart';
-import 'register.dart';
 import 'src/providers/count_provider.dart';
 import 'style.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 final GoRouter _router = GoRouter(
     routes: <RouteBase>[
@@ -36,6 +35,8 @@ final GoRouter _router = GoRouter(
 );
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   State<StatefulWidget> createState() => _MyAppState();
 }

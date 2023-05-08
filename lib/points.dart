@@ -24,7 +24,7 @@ class Result extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 130,
         ),
         CardTitle(resultComment),

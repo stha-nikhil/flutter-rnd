@@ -44,8 +44,8 @@ class _DoubleBackToCloseState extends State<DoubleBackToClose> {
       return false;
     }
 
-    final _currentTime = DateTime.now().millisecondsSinceEpoch;
-    if ((_currentTime - _lastTimeBackButtonWasTapped) < exitTimeInMillis) {
+    final currentTime = DateTime.now().millisecondsSinceEpoch;
+    if ((currentTime - _lastTimeBackButtonWasTapped) < exitTimeInMillis) {
       ScaffoldMessenger.of(context).removeCurrentSnackBar();
       return true;
     } else {

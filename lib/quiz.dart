@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/question.dart';
 import 'package:provider/provider.dart';
 
-import 'answer.dart';
 import 'drawer.dart';
 import 'points.dart';
 import 'src/providers/count_provider.dart';
@@ -41,7 +39,7 @@ class _QuizState extends State<Quiz> {
                     // ),
                     Container(
                       width: double.infinity,
-                      margin: EdgeInsets.all(9.8),
+                      margin: const EdgeInsets.all(9.8),
                       child: Text(
                         questionProvider
                                 .questions[questionProvider.questionIndex]

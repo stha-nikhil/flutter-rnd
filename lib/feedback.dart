@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'drawer.dart';
-import 'register.dart';
-
 class FeedBackForm extends StatefulWidget {
   const FeedBackForm({Key? key}) : super(key: key);
 
@@ -136,7 +133,7 @@ class _FeedBackFormState extends State<FeedBackForm> {
           ],
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 20,
       ),
       Row(
@@ -147,7 +144,7 @@ class _FeedBackFormState extends State<FeedBackForm> {
             Expanded(
               // padding: const EdgeInsets.only(left:40),
               child: Padding(
-                  padding: EdgeInsets.only(left: 20, right: 40),
+                  padding: const EdgeInsets.only(left: 20, right: 40),
                   child: ElevatedButton(
                     onPressed: () {
                       _submit();

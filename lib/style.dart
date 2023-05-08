@@ -41,7 +41,7 @@ final elevatedButtonStyle = ElevatedButtonThemeData(
       shape: MaterialStateProperty.all(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
       minimumSize: MaterialStateProperty.all(
-        Size.fromHeight(70),
+        const Size.fromHeight(70),
       )),
 );
 

@@ -105,7 +105,7 @@ class ProgressBar extends StatelessWidget {
         animation: true,
         lineHeight: 40,
         percent: progress,
-        center: Text('$percent%',
+        center: Text('${percent.toStringAsFixed(2)}%',
             style: Theme.of(context).textTheme.titleMedium,),
         progressColor: Colors.teal,
       ),

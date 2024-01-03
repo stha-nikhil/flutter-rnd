@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'drawer.dart';
-import 'main.dart';
-import 'src/app.dart';
 
 class Result extends StatelessWidget {
   const Result(this.result, this.resetHandler, {super.key});

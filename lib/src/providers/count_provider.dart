@@ -5,7 +5,7 @@ class CountPoints with ChangeNotifier {
   int _totalPoint = 0;
 
 
-  var _questions = [
+  final _questions = [
     {
       'questionText': 'A compiler transforms _____',
       'answers': [

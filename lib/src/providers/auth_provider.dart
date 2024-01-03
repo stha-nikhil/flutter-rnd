@@ -16,7 +16,7 @@ class AuthProvider with ChangeNotifier {
 
   User? get dbUser => _dbUser;
 
-  bool _loggedIn = false;
+  final bool _loggedIn = false;
 
   bool get loggedIn => _loggedIn;
 
